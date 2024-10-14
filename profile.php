@@ -63,45 +63,49 @@ if (isset($_POST['update_profile'])) {
 
         <!-- Profile Section -->
         <div class="container" style="margin-top: 50px;">
-            <h2>My Profile</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <form action="" method="POST">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>First Name</th>
-                                <td><input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name']; ?>" required></td>
-                            </tr>
-                            <tr>
-                                <th>Last Name</th>
-                                <td><input type="text" name="last_name" class="form-control" value="<?php echo $user['last_name']; ?>" required></td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td><input type="email" name="email" class="form-control" value="<?php echo $user['email']; ?>" required></td>
-                            </tr>
-                            <tr>
-                                <th>Mobile</th>
-                                <td><input type="text" name="mobile" class="form-control" value="<?php echo $user['mobile']; ?>" required></td>
-                            </tr>
-                            <tr>
-                                <th>Address 1</th>
-                                <td><input type="text" name="address1" class="form-control" value="<?php echo $user['address1']; ?>"></td>
-                            </tr>
-                            <tr>
-                                <th>Address 2</th>
-                                <td><input type="text" name="address2" class="form-control" value="<?php echo $user['address2']; ?>"></td>
-                            </tr>
-                            <tr>
-                                <th>Password</th>
-                                <td><input type="password" name="password" class="form-control" placeholder="Enter new password if you want to change"></td>
-                            </tr>
-                        </table>
-                        <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
-                    </form>
-                </div>
-            </div>
+    <h2>My Profile</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="POST">
+                <table class="table table-striped">
+                    <tr>
+                        <th>First Name</th>
+                        <td><input type="text" name="first_name" class="form-control" value="<?php echo $user['first_name']; ?>" required></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td><input type="text" name="last_name" class="form-control" value="<?php echo $user['last_name']; ?>" required></td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td><input type="email" name="email" class="form-control" value="<?php echo $user['email']; ?>" required></td>
+                    </tr>
+                    <tr>
+                        <th>Mobile</th>
+                        <td><input type="text" name="mobile" class="form-control" value="<?php echo $user['mobile']; ?>" required></td>
+                    </tr>
+                    <tr>
+                        <th>Address 1</th>
+                        <td><input type="text" name="address1" class="form-control" value="<?php echo $user['address1']; ?>"></td>
+                    </tr>
+                    <tr>
+                        <th>Address 2</th>
+                        <td><input type="text" name="address2" class="form-control" value="<?php echo $user['address2']; ?>"></td>
+                    </tr>
+                    <tr>
+                        <th>Password</th>
+                        <td><input type="password" name="password" class="form-control" placeholder="Enter new password if you want to change"></td>
+                    </tr>
+                </table>
+                <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
+            </form>
         </div>
+        <div class="col-md-6">
+            <!-- Image on the right side of the form -->
+            <img src="./img/icon/icon.png" alt="Profile Image" class="img-fluid" style="max-width: 100%; height: auto;">
+        </div>
+    </div>
+</div>
 
         <!-- Include the footer -->
         <?php include('footer.php'); ?>

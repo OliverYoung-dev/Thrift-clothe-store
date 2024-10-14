@@ -65,7 +65,7 @@
 							</div>
 							<div class="shop-body">
 								<h3>Shoes<br>Collection</h3>
-								<a href="" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="store.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div></a>
 					</div>
@@ -79,7 +79,7 @@
 							</div>
 							<div class="shop-body">
 								<h3>Men<br>Collection</h3>
-								<a href="" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="store.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
 						</div></a>
 					</div>
@@ -93,7 +93,7 @@
 							</div>
 							<div class="shop-body">
 								<h3>Women<br>Collection</h3>
-								<a href="" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
+								<a href="store.php" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a>
 							</div>
                             </div></a>
 					</div>
@@ -121,9 +121,9 @@
 							<div class="section-nav">
 								<ul class="section-tab-nav tab-nav">
 									<li class="active"><a data-toggle="tab" href="#tab1">Trousers</a></li>
-									<li><a data-toggle="tab" href="#tab1">Dresses</a></li>
-									<li><a data-toggle="tab" href="#tab1">Shoes</a></li>
-									<li><a data-toggle="tab" href="#tab1">Sweaters</a></li>
+									<li><a data-toggle="tab" href="#tab2">Dresses</a></li>
+									<li><a data-toggle="tab" href="#tab3">Shoes</a></li>
+									<li><a data-toggle="tab" href="#tab4">Sweaters</a></li>
 								</ul>
 							</div>
 						</div>
@@ -376,7 +376,7 @@
                     </ul>
                     <h2 class="text-uppercase">Hot Deal This Week</h2>
                     <p>New Collection Up to 50% OFF</p>
-                    <a class="primary-btn cta-btn" href="index.php">Shop now</a>
+                    <a class="primary-btn cta-btn" href="store.php">Shop now</a>
                 </div>
             </div>
         </div>

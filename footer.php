@@ -11,8 +11,17 @@
 								
 								<ul class="footer-links">
 									<li><a href="#"><i class="fa fa-map-marker"></i>address</a></li>
-									<li><a href="#"><i class="fa fa-phone"></i>25478906185</a></li>
-									<li><a href="#"><i class="fa fa-envelope-o"></i>Valentine@gmail.com</a></li>
+									<li>
+                                  <a href="tel:+254789061685" aria-label="Call Valentine at 254789061685">
+                                      <i class="fa fa-phone"></i> +254 789 061 685
+                                  </a>
+                              </li>
+                              <li>
+                                  <a href="mailto:valentine&#64;gmail.com" aria-label="Email Valentine at valentine@gmail.com">
+                                      <i class="fa fa-envelope-o"></i> valentine&#64;gmail.com
+                                  </a>
+                              </li>
+
 								</ul>
 							</div>
 						</div>
@@ -36,10 +45,10 @@
 							<div class="footer">
 								<h3 class="footer-title">Categories</h3>
 								<ul class="footer-links">
-									<li><a href="#">Shoes</a></li>
-									<li><a href="#">Men</a></li>
-									<li><a href="#">Women</a></li>
-									<li><a href="#">Kids</a></li>
+									<li><a href="store.php">Shoes</a></li>
+									<li><a href="store.php">Men</a></li>
+									<li><a href="store.php">Women</a></li>
+									<li><a href="store.php">Kids</a></li>
 									<!-- <li><a href="#">Accessories</a></li> -->
 								</ul>
 							</div>

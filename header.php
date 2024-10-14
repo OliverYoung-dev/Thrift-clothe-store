@@ -32,6 +32,7 @@ session_start();
 		<!-- Custom stlylesheet -->
 		<link type="text/css" rel="stylesheet" href="css/style.css"/>
 		<link type="text/css" rel="stylesheet" href="css/accountbtn.css"/>
+		<link rel="shortcut icon" href="./img/icon/icon.png" type="image/x-icon">
 		
 		
 		
@@ -124,39 +125,56 @@ session_start();
 					
 					<ul class="header-links pull-right">
 						<!-- <li><a href="#"><i class="fa fa-inr"></i> </a></li> -->
-						<li><?php
-                             include "db.php";
-                            if(isset($_SESSION["uid"])){
-                                $sql = "SELECT first_name FROM user_info WHERE user_id='$_SESSION[uid]'";
-                                $query = mysqli_query($con,$sql);
-                                $row=mysqli_fetch_array($query);
-                                
-                                echo '
-                               <div class="dropdownn">
-                                  <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> HI '.$row["first_name"].'</a>
-                                  <div class="dropdownn-content">
-                                    <a href="profile.php"> <i class="fa fa-user-circle" aria-hidden="true" ></i>My Profile</a>
-                                    <a href="logout.php"  ><i class="fa fa-sign-in" aria-hidden="true"></i>Log out</a>
-                                    
-                                  </div>
-                                </div>';
+						<ul class="header-links pull-right">
+    <li>
+        <?php
+        include "db.php";
+        if (isset($_SESSION["uid"])) {
+            $sql = "SELECT first_name FROM user_info WHERE user_id='$_SESSION[uid]'";
+            $query = mysqli_query($con, $sql);
+            $row = mysqli_fetch_array($query);
+            
+            echo '
+            <div class="dropdownn">
+                <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-o"></i> HI ' . htmlspecialchars($row["first_name"]) . '</a>
+                <div class="dropdownn-content">
+                    <a href="profile.php"><i class="fa fa-user-circle" aria-hidden="true"></i> My Profile</a>
+                    <a href="order.php"><i class="fa fa-arrow-right" aria-hidden="true"></i> Order History</a>
+                    <a href="logout.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Log out</a>
+                </div>
+            </div>';
+        } else { 
+            echo '
+            <div class="dropdownn">
+                <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal"><i class="fa fa-user-o"></i> My Account</a>
+                <div class="dropdownn-content">
+                    <a href="" data-toggle="modal" data-target="#Modal_login"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+                    <a href="" data-toggle="modal" data-target="#Modal_register"><i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+                </div>
+            </div>';
+        }
+        ?>
+    </li>				
+</ul>
 
-                            }else{ 
-                                echo '
-                                <div class="dropdownn">
-                                  <a href="#" class="dropdownn" data-toggle="modal" data-target="#myModal" ><i class="fa fa-user-o"></i> My Account</a>
-                                  <div class="dropdownn-content">
-                                    <a href="" data-toggle="modal" data-target="#Modal_login"><i class="fa fa-sign-in" aria-hidden="true" ></i>Login</a>
-                                    <a href="" data-toggle="modal" data-target="#Modal_register"><i class="fa fa-user-plus" aria-hidden="true"></i>Register</a>
-                                    
-                                  </div>
-                                </div>';
-                                
-                            }
-                                             ?>
-                               
-                                </li>				
-					</ul>
+<?php
+// Display admin link only if the user is not logged in
+if (!isset($_SESSION["uid"])) {
+    echo '<a class="admin" href="./admin"><i class="fa fa-user-o"></i> ADMIN</a>';
+}
+?>
+					<style>
+						.admin{
+							display:;
+							position: absolute;
+							top: 10px;
+							right: 10px;
+							color: white;
+						}
+						.fa fa-user-o{
+							color: red;
+						}
+					</style>
 					
 				</div>
 			</div>
@@ -184,20 +202,81 @@ session_start();
 						<!-- /LOGO -->
 
 						<!-- SEARCH BAR -->
-						<div class="col-md-6">
-							<div class="header-search">
-								<form>
-									<select class="input-select">
-										<option value="0">All Categories</option>
-										<option value="1">Men</option>
-										<option value="1">Women </option>
-									</select>
-									<input class="input" id="search" type="text" placeholder="Search here">
-									<button type="submit" id="search_btn" class="search-btn">Search</button>
-								</form>
-							</div>
-						</div>
-						<!-- /SEARCH BAR -->
+						<?php
+include 'db.php'; // Include your DB connection
+
+if (isset($_POST['search']) && isset($_POST['category'])) {
+    $search = $_POST['search'];
+    $category = $_POST['category'];
+
+    $sql = "SELECT * FROM products WHERE name LIKE ?"; // Basic search
+    $params = ["%$search%"];
+    
+    if ($category !== 'all') {
+        $sql .= " AND category = ?";
+        $params[] = $category;
+    }
+    
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    if ($results) {
+        foreach ($results as $product) {
+            echo '<div class="col-md-4">';
+            echo '<img src="' . $product['image_url'] . '" alt="' . $product['name'] . '">';
+            echo '<p>' . $product['name'] . '</p>';
+            echo '</div>';
+        }
+    } else {
+        echo '<p>No products found.</p>';
+    }
+}
+?>
+
+
+<div class="col-md-6">
+    <div class="header-search">
+        <form id="product-search-form">
+            <select class="input-select" id="category">
+                <option value="all">All Categories</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="kids">Kids</option>
+            </select>
+            <input class="input" id="search" type="text" placeholder="Search here">
+            <button type="submit" id="search_btn2" class="search-btn">Search</button>
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#product-search-form").on('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting the default way
+            var searchQuery = $("#search").val();
+            var category = $("#category").val();
+
+            $.ajax({
+                url: "fetch_products.php", // PHP script that fetches the products
+                method: "POST",
+                data: {
+                    search: searchQuery,
+                    category: category
+                },
+                success: function (response) {
+                    // Assuming the response contains the HTML with product images
+                    $("#product-row").html(response);
+                }
+            });
+        });
+    });
+</script>
+
+<!-- /SEARCH BAR -->
+
 
 						<!-- ACCOUNT -->
 						<div class="col-md-3 clearfix">
@@ -218,7 +297,7 @@ session_start();
 										</div>
 										
 										<div class="cart-btns">
-												<a href="#" style="width:100%;"><i class="fa fa-edit"></i>  edit cart</a>
+												<a href="cart.php" style="width:100%;"><i class="fa fa-edit"></i>  edit cart</a>
 											
 										</div>
 									</div>

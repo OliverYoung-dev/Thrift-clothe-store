@@ -40,7 +40,7 @@ if (isset($_SESSION["uid"])) {
     '$address', '$city', '$state', '$zip','$cardname','$cardnumberstr','$expdate','$total_count','$prod_total','$cvv')";
 
 
-    if(mysqli_query($con,$sql)){
+    if(mysqli_query($con, $sql)){
         $i=1;
         $prod_id_=0;
         $prod_price_=0;

@@ -48,7 +48,7 @@ CREATE TABLE `admin_info` (
 --
 
 INSERT INTO `admin_info` (`admin_id`, `admin_name`, `admin_email`, `admin_password`) VALUES
-(1, 'admin', 'admin@gmail.com', '$2y$12$IFDHH3BW13syEuj0w4JJ3euwB.y8/LoYaGhFHynZhBMcD3a8IZEuG');
+(1, 'Val', 'valentinemoraa@gmail.com', '$2y$10$gNM1n8RCcKp4Fs/5MAmBAuZy.b0..Eicvdvn8gEsrswyCttbpfTGG');
 
 -- --------------------------------------------------------
 
@@ -379,6 +379,22 @@ CREATE TABLE `user_info_backup` (
 -- (23, 'hemanth', 'reddy', 'hemanth@gmail.com', 'Puneeth@123', '9876543234', 'Bangalore', 'Kumbalagodu'),
 -- (24, 'newuser', 'user', 'newuser@gmail.com', 'puneeth@123', '9535688928', 'Bangalore', 'Kumbalagodu'),
 -- (25, 'otheruser', 'user', 'otheruser@gmail.com', 'puneeth@123', '9535688928', 'Bangalore', 'Kumbalagodu');
+
+
+CREATE TABLE mpesa_payments (
+    payment_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    full_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    state VARCHAR(100),
+    zip VARCHAR(20),
+    mpesa_amount DECIMAL(10, 2) NOT NULL,
+    mpesa_phone VARCHAR(15) NOT NULL,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES user_info(user_id)
+);
 
 --
 -- Indexes for dumped tables

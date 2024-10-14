@@ -3,18 +3,17 @@
           <nav class="float-left">
             <ul>
               <li>
-                <a href="">
-                  PuneethReddy
+                <a href="index.php">
+                  QUEEN'S ONLINE THRIFT STORE
                 </a>
               </li>
             </ul>
           </nav>
-          <div class="copyright float-right">
+          <div class="copyright float-right">QUEEN'S ONLINE THRIFT STORE
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="" target="_blank">Puneethreddy</a> for a better web.
+            </script>
           </div>
           <!-- your footer here -->
         </div>
